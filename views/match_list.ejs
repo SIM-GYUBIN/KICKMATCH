@@ -169,15 +169,30 @@
                                                 <div class="info_box">
                                                   <div class="score_info">
                                                     <div class="category">승점</div>
-                                                    <div class="win_score">
-                                                      <%= Matches[i].hometeamInfo.win_score %>
-                                                    </div> <br />
-                                                    <div class="category">전적</div>
-                                                    <div class="total_score">
-                                                      <%= Matches[i].hometeamInfo.win %>승 /
-                                                        <%= Matches[i].hometeamInfo.draw %>무 /
-                                                          <%= Matches[i].hometeamInfo.lose %>패
-                                                    </div>
+                                                    <% if ( Matches[i].hometeamInfo.win_score> loginTeam.win_score ) {
+                                                      %>
+                                                      <!-- 1. 상대팀이 승점이 높은 경우 -->
+                                                      <div class="win_score" style="color: #FF5733;">
+                                                        <%= Matches[i].hometeamInfo.win_score %>
+                                                      </div>
+                                                      <!-- 2. 같은 경우 -->
+                                                      <% } else if
+                                                        (Matches[i].hometeamInfo.win_score==loginTeam.win_score) { %>
+                                                        <div class="win_score" style="color:#56C453;">
+                                                          <%= Matches[i].hometeamInfo.win_score %>
+                                                        </div>
+                                                        <!-- 3. 낮은 경우 -->
+                                                        <% } else { %>
+                                                          <div class="win_score" style="color:#339FFF;">
+                                                            <%= Matches[i].hometeamInfo.win_score %>
+                                                          </div>
+                                                          <% } %> <br />
+                                                            <div class="category">전적</div>
+                                                            <div class="total_score">
+                                                              <%= Matches[i].hometeamInfo.win %>승 /
+                                                                <%= Matches[i].hometeamInfo.draw %>무 /
+                                                                  <%= Matches[i].hometeamInfo.lose %>패
+                                                            </div>
                                                   </div>
                                                 </div>
                                                 <div class="info_box">
