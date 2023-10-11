@@ -150,8 +150,8 @@ module.exports = {
 
     //id password로 단일 TEam 조회 (로그인)
     getLoginTeam: function (id, password, callback) {
-        const querystring = `SELECT * FROM Team Where id= '${id}' and password = '${password}';`;
-        mysql.query(querystring, function (error, result) {
+        const querystring = `SELECT * FROM Team Where id= ? and password = ?;`;
+        mysql.query(querystring,[id,password] ,function (error, result) {
             if (error) throw error;
             if (result.length) {
                 callback(result[0]);
